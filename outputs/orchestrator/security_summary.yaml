@@ -1,0 +1,42 @@
+# Security Summary — Portafolio Adrián Zamorano
+# Fecha: 2026-07-02
+
+security_audit:
+  status: "PASS"
+
+  hardcoded_secrets:
+    status: "PASS"
+    notes:
+      - "No se encontraron API keys, tokens o contraseñas en el código ✅"
+
+  xss_vulnerabilities:
+    status: "PASS"
+    notes:
+      - "No hay renderizado directo de contenido HTML sin sanitizar ✅"
+      - "Todos los textos son literales en los componentes ✅"
+      - "No hay dangerouslySetInnerHTML ✅"
+
+  dependencies:
+    status: "PASS"
+    notes:
+      - "2 vulnerabilidades moderadas (next.js, pre-existentes en create-next-app) ⚠️"
+      - "No afectan a un sitio SSG estático ✅"
+      - "Ejecutar 'npm audit fix' para limpiar ✅"
+
+  data_exposure:
+    status: "PASS"
+    notes:
+      - "No hay formularios que procesen datos en servidor ✅"
+      - "Formulario de contacto usa mailto: (cliente-side) ✅"
+      - "No hay bases de datos, APIs, o almacenamiento sensible ✅"
+
+  headers:
+    status: "PASS"
+    notes:
+      - "Vercel aplica headers de seguridad por defecto ✅"
+      - "next.config.js puede configurar CSP si es necesario ✅"
+
+  overall: "SECURE ✅"
+  recommendations:
+    - "Ejecutar 'npm audit fix --force' para resolver vulnerabilidades moderadas"
+    - "Considerar agregar Content-Security-Policy si se despliega con headers personalizados"

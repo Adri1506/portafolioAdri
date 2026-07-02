@@ -1,0 +1,51 @@
+# Design Summary — Portafolio Adrián Zamorano
+# Generado por: Designer (vía Orchestrator)
+# Fecha: 2026-07-02
+
+design:
+  aesthetic: "Cool Blue Technical"
+  description: >-
+    Refinado, preciso y técnico. Azul profundo como ancla,
+    azul frío como acento, neutros slate. Comunica control,
+    precisión y estabilidad — coherente con un ingeniero SDD.
+
+  palette:
+    primary: "#1A56DB"
+    deep_navy: "#0A1929"
+    accent: "#06B6D4"
+    background: "#FAFAFA"
+    surface: "#FFFFFF"
+    text_primary: "#0F172A"
+    text_secondary: "#64748B"
+
+  typography:
+    display: "Space Grotesk (headings)"
+    body: "Inter (body text)"
+    mono: "JetBrains Mono (code/badges)"
+
+  layout:
+    grid: "12-column"
+    max_width: "1280px"
+    hero: "full-width gradient"
+
+  pages:
+    - "Home (Hero)"
+    - "Sobre Mí"
+    - "Proyectos (grid)"
+    - "Caso de Estudio (detalle dinámico)"
+    - "Skills Técnicas"
+    - "Metodología SDD"
+    - "Contacto"
+    - "Timeline / Trayectoria"
+    - "Footer"
+
+  differentiators:
+    - "Ciclo SDD visual en cada caso de estudio"
+    - "Badge 'En producción' con animación"
+    - "Gradiente hero azul profundo"
+    - "Estética técnica pero pulida"
+
+  responsive:
+    mobile: "1 column, hamburger nav, hero texto reducido"
+    tablet: "2 columns"
+    desktop: "3 columns + layout asimétrico"

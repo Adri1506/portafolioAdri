@@ -1,0 +1,191 @@
+# Planning Summary — Portafolio Adrián Zamorano
+# Generado por: Planner (vía Orchestrator)
+# Fecha: 2026-07-02
+
+project:
+  name: "Portafolio Adrián Zamorano"
+  total_features: 11
+  features:
+    - id: "001"
+      name: "Landing / Hero"
+      priority: "high"
+      files:
+        - "spec/features/001-landing-hero/spec.md"
+        - "spec/features/001-landing-hero/plan.md"
+        - "spec/features/001-landing-hero/tasks.md"
+      tasks_count: 3
+      components:
+        - "Hero.tsx"
+        - "CTAButton.tsx"
+      pages:
+        - "src/app/page.tsx"
+
+    - id: "002"
+      name: "Sobre Mí"
+      priority: "high"
+      files:
+        - "spec/features/002-sobre-mi/spec.md"
+        - "spec/features/002-sobre-mi/plan.md"
+        - "spec/features/002-sobre-mi/tasks.md"
+      tasks_count: 4
+      components:
+        - "AboutSection.tsx"
+        - "StatCard.tsx"
+      data:
+        - "src/lib/data/profile.ts"
+      pages:
+        - "src/app/about/page.tsx"
+
+    - id: "003"
+      name: "Proyectos (Grid)"
+      priority: "high"
+      files:
+        - "spec/features/003-proyectos/spec.md"
+        - "spec/features/003-proyectos/plan.md"
+        - "spec/features/003-proyectos/tasks.md"
+      tasks_count: 7
+      components:
+        - "ProjectsGrid.tsx"
+        - "ProjectCard.tsx"
+        - "Badge.tsx"
+        - "Tag.tsx"
+      data:
+        - "src/lib/data/projects.ts"
+      types:
+        - "src/types/index.ts"
+      pages:
+        - "src/app/projects/page.tsx"
+
+    - id: "004"
+      name: "Caso Chambecas"
+      priority: "high"
+      files:
+        - "spec/features/004-caso-chambecas/spec.md"
+        - "spec/features/004-caso-chambecas/plan.md"
+        - "spec/features/004-caso-chambecas/tasks.md"
+      tasks_count: 4
+      components:
+        - "CaseStudy.tsx"
+        - "SDDCycle.tsx"
+      pages:
+        - "src/app/projects/[id]/page.tsx"
+
+    - id: "005"
+      name: "Caso SebaTatto"
+      priority: "high"
+      files:
+        - "spec/features/005-caso-sebatatto/spec.md"
+        - "spec/features/005-caso-sebatatto/plan.md"
+        - "spec/features/005-caso-sebatatto/tasks.md"
+      tasks_count: 3
+      reuses: "CaseStudy, SDDCycle de feature 004"
+
+    - id: "006"
+      name: "Caso Tragaperras"
+      priority: "high"
+      files:
+        - "spec/features/006-caso-tragaperras/spec.md"
+        - "spec/features/006-caso-tragaperras/plan.md"
+        - "spec/features/006-caso-tragaperras/tasks.md"
+      tasks_count: 3
+      reuses: "CaseStudy, SDDCycle de feature 004"
+
+    - id: "007"
+      name: "Skills Técnicas"
+      priority: "medium"
+      files:
+        - "spec/features/007-skills/spec.md"
+        - "spec/features/007-skills/plan.md"
+        - "spec/features/007-skills/tasks.md"
+      tasks_count: 3
+      components:
+        - "SkillsSection.tsx"
+      data:
+        - "src/lib/data/skills.ts"
+      pages:
+        - "src/app/skills/page.tsx"
+
+    - id: "008"
+      name: "Metodología SDD"
+      priority: "medium"
+      files:
+        - "spec/features/008-metodologia-sdd/spec.md"
+        - "spec/features/008-metodologia-sdd/plan.md"
+        - "spec/features/008-metodologia-sdd/tasks.md"
+      tasks_count: 2
+      components:
+        - "SDDMethodology.tsx"
+      pages:
+        - "src/app/methodology/page.tsx"
+
+    - id: "009"
+      name: "Contacto"
+      priority: "medium"
+      files:
+        - "spec/features/009-contacto/spec.md"
+        - "spec/features/009-contacto/plan.md"
+        - "spec/features/009-contacto/tasks.md"
+      tasks_count: 5
+      components:
+        - "ContactSection.tsx"
+        - "ContactForm.tsx"
+        - "SocialLinks.tsx"
+      data:
+        - "src/lib/data/contact.ts"
+      pages:
+        - "src/app/contact/page.tsx"
+
+    - id: "010"
+      name: "Timeline / Trayectoria"
+      priority: "low"
+      files:
+        - "spec/features/010-timeline/spec.md"
+        - "spec/features/010-timeline/plan.md"
+        - "spec/features/010-timeline/tasks.md"
+      tasks_count: 3
+      components:
+        - "Timeline.tsx"
+      data:
+        - "src/lib/data/timeline.ts"
+      pages:
+        - "src/app/timeline/page.tsx"
+
+    - id: "011"
+      name: "Footer"
+      priority: "low"
+      files:
+        - "spec/features/011-footer/spec.md"
+        - "spec/features/011-footer/plan.md"
+        - "spec/features/011-footer/tasks.md"
+      tasks_count: 2
+      components:
+        - "Footer.tsx"
+      layout:
+        - "src/app/layout.tsx"
+
+  shared_components:
+    - "Badge.tsx"
+    - "Tag.tsx"
+    - "SDDCycle.tsx"
+    - "CaseStudy.tsx"
+    - "SocialLinks.tsx"
+
+  data_files:
+    - "src/lib/data/projects.ts"
+    - "src/lib/data/profile.ts"
+    - "src/lib/data/skills.ts"
+    - "src/lib/data/contact.ts"
+    - "src/lib/data/timeline.ts"
+
+  execution_order:
+    - "Feature 001 (base: Hero + layout)"
+    - "Feature 011 (base: Footer + layout global)"
+    - "Feature 003 (base: Proyectos + types + data)"
+    - "Feature 004 (base: CaseStudy + SDDCycle)"
+    - "Feature 005 (reusa componentes de 004)"
+    - "Feature 006 (reusa componentes de 004)"
+    - "Feature 002 (Sobre Mí)"
+    - "Feature 007 (Skills)"
+    - "Feature 008 (Metodología SDD)"
+    - "Feature 009 (Contacto)"
+    - "Feature 010 (Timeline)"

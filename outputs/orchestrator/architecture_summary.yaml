@@ -1,0 +1,48 @@
+# Architecture Summary — Portafolio Adrián Zamorano
+# Generado por: Arquitecto (vía Orchestrator)
+# Fecha: 2026-07-02
+
+project:
+  name: "Portafolio Adrián Zamorano"
+  type: "SSG Portfolio"
+  stack:
+    framework: "Next.js 14+ (App Router)"
+    styling: "Tailwind CSS"
+    language: "TypeScript"
+    deploy: "Vercel"
+    fonts: "next/font + Google Fonts"
+
+  patterns:
+    - "Static Site Generation (SSG)"
+    - "Atomic Design (atoms → molecules → organisms)"
+    - "Data-driven components (src/lib/data/)"
+    - "Nested layouts (App Router)"
+
+  modules:
+    - "src/app/ — routing y layouts"
+    - "src/components/ — UI atómica"
+    - "src/lib/data/ — datos estáticos"
+    - "src/types/ — interfaces"
+
+  features_count: 11
+  features_high_priority:
+    - "001 Landing / Hero"
+    - "002 Sobre Mí"
+    - "003 Proyectos"
+    - "004 Caso Chambecas"
+    - "005 Caso SebaTatto"
+    - "006 Caso Tragaperras"
+
+  design_direction:
+    colors: "azulados (tonos azul marino, azul claro, acentos)"
+    style: "moderno, limpio, profesional"
+
+  key_decisions:
+    - "SSG sobre SSR (contenido estático)"
+    - "Datos en TS, no CMS"
+    - "Rutas dinámicas /projects/[id]"
+    - "Atomic Design para componentes"
+
+  risks:
+    - "Diseño genérico si no se aplica bien paleta azulada"
+    - "Faltan screenshots de proyectos"
