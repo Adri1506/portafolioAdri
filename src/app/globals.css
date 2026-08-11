@@ -1,48 +1,230 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════
+   Portafolio Adrián Zamorano — Design System "Constelación Técnica" v2
+   DARK = default · LIGHT = clase .light en <html>
+   ═══════════════════════════════════════════════════════════ */
+
+@custom-variant light (&:where(.light, .light *));
+
 @theme inline {
-  --color-navy-950: #050D1A;
-  --color-navy-900: #0A1929;
-  --color-navy-800: #0F2640;
-  --color-navy-700: #1A365D;
-  --color-blue-700: #1D4ED8;
-  --color-blue-600: #2563EB;
-  --color-blue-500: #3B82F6;
-  --color-blue-400: #60A5FA;
-  --color-blue-300: #93C5FD;
-  --color-blue-200: #BFDBFE;
-  --color-blue-100: #DBEAFE;
-  --color-blue-50: #EFF6FF;
-  --color-slate-900: #0F172A;
-  --color-slate-700: #334155;
-  --color-slate-500: #64748B;
-  --color-slate-300: #CBD5E1;
-  --color-slate-200: #E2E8F0;
-  --color-slate-100: #F1F5F9;
-  --color-white: #FFFFFF;
-  --color-bg: #F4F8FF;
-  --color-surface: #FFFFFF;
-  --color-accent: #0EA5E9;
-  --color-accent-soft: #E0F2FE;
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* ─── Tipografía (cargada en layout.tsx con next/font/google) ─── */
+  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-serif:   var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  --font-body:    var(--font-inter), "Inter", sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+
+  /* ─── Tokens semánticos → utilidades (DARK = default) ─── */
+  --color-background:       #0A1929;
+  --color-foreground:       #F1F5F9;
+  --color-card:             #0F2640;
+  --color-card-foreground:  #F1F5F9;
+  --color-muted:            #0C1E33;
+  --color-muted-foreground: #A8B8C9;
+  --color-border:           #1C304C;
+  --color-border-strong:    #2B4365;
+  --color-primary:          #FBBF24;
+  --color-primary-hover:    #FCD34D;
+  --color-primary-foreground: #0A1929;
+  --color-secondary:        #8FB5DC;
+  --color-secondary-hover:  #B9D0E8;
+  --color-success:          #34D399;
+  --color-danger:           #F87171;
+  --color-info:             #8FB5DC;
+
+  /* ─── Escalas crudas ─── */
+  --color-neutral-50:  #F5F7FA;
+  --color-neutral-100: #E9EEF5;
+  --color-neutral-200: #D7E0EB;
+  --color-neutral-300: #B7C5D6;
+  --color-neutral-400: #8FA3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #46586E;
+  --color-neutral-700: #2C3D53;
+  --color-neutral-800: #1C304C;
+  --color-neutral-900: #0F2640;
+  --color-neutral-950: #0A1929;
+
+  --color-amber-50:  #FFFBEB;
+  --color-amber-100: #FEF3C7;
+  --color-amber-200: #FDE68A;
+  --color-amber-300: #FCD34D;
+  --color-amber-400: #FBBF24;
+  --color-amber-500: #F59E0B;
+  --color-amber-600: #D97706;
+  --color-amber-700: #B45309;
+  --color-amber-800: #92400E;
+  --color-amber-900: #78350F;
+  --color-amber-950: #451A03;
+
+  --color-steel-50:  #EEF4FA;
+  --color-steel-100: #DCE8F4;
+  --color-steel-200: #B9D0E8;
+  --color-steel-300: #8FB5DC;
+  --color-steel-400: #5E93C8;
+  --color-steel-500: #3E73AE;
+  --color-steel-600: #2A5C94;
+  --color-steel-700: #1E4A7A;
+  --color-steel-800: #163757;
+  --color-steel-900: #10273F;
+  --color-steel-950: #0A1929;
+
+  /* ─── Tipografía fluida ─── */
+  --text-hero:     clamp(3.25rem, 2.5rem + 6vw, 7.5rem);
+  --text-tagline:  clamp(0.875rem, 0.75rem + 0.5vw, 1.125rem);
+  --text-h1:       clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  --text-h2:       clamp(1.875rem, 1.5rem + 1.5vw, 3rem);
+  --text-h3:       clamp(1.25rem, 1.125rem + 0.5vw, 1.625rem);
+  --text-h4:       clamp(1.125rem, 1rem + 0.3vw, 1.375rem);
+  --text-lg:       clamp(1.125rem, 1.0625rem + 0.25vw, 1.25rem);
+  --text-mono-sm:  0.8125rem;
+
+  /* ─── Sombras ─── */
+  --shadow-xs: 0 1px 2px rgba(2, 6, 17, 0.40);
+  --shadow-sm: 0 2px 8px rgba(2, 6, 17, 0.40);
+  --shadow-md: 0 8px 24px rgba(2, 6, 17, 0.50);
+  --shadow-lg: 0 16px 48px rgba(2, 6, 17, 0.55);
+
+  /* ─── Radios ─── */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+
+  /* ─── Motion ─── */
+  --duration-micro: 120ms;
+  --duration-fast: 200ms;
+  --duration-standard: 300ms;
+  --duration-slow: 500ms;
+  --duration-reveal: 650ms;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ─── Gradientes ─── */
+  --gradient-brand: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  --gradient-underline: linear-gradient(90deg, #FBBF24 0%, rgba(251, 191, 36, 0) 100%);
+  --gradient-sky: radial-gradient(ellipse 120% 80% at 70% -20%, #142E4E 0%, rgba(10, 25, 41, 0) 55%);
+  --gradient-abyss: linear-gradient(180deg, #0A1929 0%, #060B14 100%);
+  --gradient-section: linear-gradient(180deg, #0A1929 0%, #0C1E33 100%);
+
+  /* ─── Constelación ─── */
+  --constellation-node: #8FB5DC;
+  --constellation-line: #5E93C8;
+  --constellation-star: #FBBF24;
+  --dot-color: rgba(143, 181, 220, 0.08);
 }
 
+/* ═══════════ LIGHT MODE ═══════════ */
+.light.light {
+  color-scheme: light;
+}
+
+/* Body y html: cambio directo de colores */
+.light.light body,
+.light.light html {
+  background-color: #F5F7FA !important;
+  color: #0A1929 !important;
+}
+
+/* Variables semánticas para utilidades Tailwind */
+.light.light {
+  --color-background:       #F5F7FA;
+  --color-foreground:       #0A1929;
+  --color-card:             #F1F5F9;
+  --color-card-foreground:  #0A1929;
+  --color-muted:            #EDF1F7;
+  --color-muted-foreground: #3E5068;
+  --color-border:           #E2E8F0;
+  --color-border-strong:    #B7C5D6;
+  --color-primary:          #B45309;
+  --color-primary-hover:    #92400E;
+  --color-primary-foreground: #0A1929;
+  --color-secondary:        #2A5C94;
+  --color-secondary-hover:  #1E4A7A;
+  --color-success:          #047857;
+  --color-danger:           #B91C1C;
+  --color-info:             #2A5C94;
+
+  --constellation-node: #1E4A7A;
+  --constellation-line: #5E93C8;
+  --constellation-star: #B45309;
+  --dot-color: rgba(30, 74, 122, 0.07);
+
+  --gradient-brand: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  --gradient-underline: linear-gradient(90deg, #B45309 0%, rgba(180, 83, 9, 0) 100%);
+  --gradient-sky: radial-gradient(ellipse 120% 80% at 70% -20%, #DCE8F4 0%, rgba(245, 247, 250, 0) 55%);
+  --gradient-abyss: linear-gradient(180deg, #F5F7FA 0%, #E9EEF5 100%);
+  --gradient-section: linear-gradient(180deg, #F5F7FA 0%, #EDF1F7 100%);
+}
+
+/* Forzar colores en elementos clave */
+.light.light .bg-background { background-color: #F5F7FA !important; }
+.light.light .bg-card { background-color: #F1F5F9 !important; }
+.light.light .bg-muted { background-color: #EDF1F7 !important; }
+.light.light .text-foreground { color: #0A1929 !important; }
+.light.light .text-card-foreground { color: #0A1929 !important; }
+.light.light .text-muted-foreground { color: #3E5068 !important; }
+.light.light .text-primary { color: #B45309 !important; }
+.light.light .text-secondary { color: #2A5C94 !important; }
+.light.light .border-border { border-color: #E2E8F0 !important; }
+.light.light .border-border-strong { border-color: #B7C5D6 !important; }
+
+/* ═══════════ Base ═══════════ */
+html { scroll-behavior: smooth; }
 body {
-  background-color: var(--color-bg);
-  color: var(--color-slate-900);
   font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--color-primary); color: var(--color-primary-foreground); }
+
+/* ═══════════ Constelación (firma visual) ═══════════ */
+.constellation { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+@keyframes twinkle { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+.constellation .star { animation: twinkle 5s ease-in-out infinite; }
+
+/* ═══════════ Dotted grid ═══════════ */
+.texture-dots {
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-@layer utilities {
-  .gradient-hero {
-    background: linear-gradient(135deg, #050D1A 0%, #0F2640 40%, #1D4ED8 100%);
+/* ═══════════ Glass funcional (topbar/sidebar sticky) ═══════════ */
+.glass-sticky {
+  background: color-mix(in oklab, var(--color-background) 78%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ═══════════ Underline draw para links ═══════════ */
+.link-underline {
+  background-image: linear-gradient(var(--color-primary), var(--color-primary));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 200ms var(--ease-standard);
+}
+.link-underline:hover, .link-underline:focus-visible { background-size: 100% 1px; }
+
+/* ═══════════ Focus visible global ═══════════ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ═══════════ Reduced motion ═══════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  .gradient-accent {
-    background: linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%);
-  }
-  .gradient-section {
-    background: linear-gradient(180deg, #F4F8FF 0%, #EFF6FF 100%);
-  }
+  .constellation .star { animation: none; }
+  html { scroll-behavior: auto; }
 }

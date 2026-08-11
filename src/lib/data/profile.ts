@@ -5,16 +5,18 @@ export const profile = {
   age: 35,
   title: "Ingeniero en Informática",
   subtitle: "Spec-Driven Development con IA",
-  bio: `Ingeniero en Informática especializado en Spec-Driven Development (SDD) con inteligencia artificial. 
+  bio: `Ingeniero en Informática especializado en desarrollo de software con inteligencia artificial y Spec-Driven Development (SDD).
 
-Durante 2 años he construido más de 50 proyectos aplicando una metodología donde la especificación es la fuente de verdad: primero se especifica, luego se planifica, se descompone en tareas, se implementa con agentes de IA y se verifica contra los criterios de aceptación.
+Mi enfoque parte de una idea simple: la especificación es la fuente de verdad del proyecto. Antes de implementar, se define qué debe construirse, se establece su arquitectura, se descompone el trabajo en tareas y se determinan los criterios que permitirán validar cada resultado. Esto permite mantener una dirección clara durante todo el proceso y reducir desviaciones respecto al objetivo original.
 
-Actualmente tengo 3 proyectos en producción en Vercel y un dominio profundo de skills, agentes y specs. Mi enfoque SDD me permite entregar software con cero scope creep, trazabilidad completa y calidad consistente.
+He desarrollado un sistema de trabajo basado en agentes de IA especializados, donde cada agente cumple una responsabilidad concreta dentro del proceso de desarrollo. La planificación, diseño, implementación, testing y validación forman parte de un flujo coordinado, en lugar de depender de un único agente encargado de resolver todo el proyecto.
 
-Busco oportunidades donde pueda aportar mi experiencia en desarrollo agéntico con IA y metodologías basadas en especificaciones.`,
+Este enfoque me permite utilizar la inteligencia artificial no solamente para generar código, sino como parte de un proceso estructurado de ingeniería de software, manteniendo control sobre lo que se construye, cómo se construye y cómo se verifica.
+
+Actualmente aplico este enfoque para desarrollar soluciones digitales para emprendedores y pequeños negocios, desde sitios web y catálogos hasta sistemas de pedidos, tiendas online e inventarios.`,
   stats: [
     { number: "50+", label: "Proyectos" },
-    { number: "3", label: "En Producción" },
+    { number: "4", label: "En Producción" },
     { number: "2", label: "Años SDD" },
     { number: "SDD", label: "Metodología" },
   ] as Stat[],

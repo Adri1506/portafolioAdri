@@ -1,32 +1,40 @@
+import SectionHeader from "@/components/molecules/SectionHeader";
 import { skillCategories } from "@/lib/data/skills";
-import Tag from "@/components/atoms/Tag";
+
+// Data actual: sin campo `level`. Se tipa como opcional para mostrar el nivel
+// cuando exista en los datos sin romper el contrato actual.
+const categories: Array<{
+  name: string;
+  skills: Array<{ name: string; level?: string }>;
+}> = skillCategories;
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 scroll-mt-20">
+    <section id="skills" className="py-20 scroll-mt-20 texture-dots">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <h2 className="text-4xl font-bold font-display text-navy-900 mb-4 text-center">
-          Skills
-        </h2>
-        <p className="text-slate-500 text-center mb-12 max-w-xl mx-auto">
-          Tecnologías y herramientas que domino, con la metodología SDD como
-          eje central.
-        </p>
+        <SectionHeader number="03." title="Habilidades" />
 
-        <div className="grid sm:grid-cols-2 gap-8">
-          {skillCategories.map((category) => (
-            <div
-              key={category.name}
-              className="bg-white rounded-xl p-6 border border-slate-200"
-            >
-              <h2 className="text-sm font-semibold font-mono text-blue-600 uppercase tracking-wider mb-4">
+        <div className="mt-12 space-y-10">
+          {categories.map((category) => (
+            <div key={category.name}>
+              <h3 className="font-mono text-xs uppercase tracking-wider text-primary">
                 {category.name}
-              </h2>
-              <div className="flex flex-wrap gap-2">
+              </h3>
+              <ul className="mt-4">
                 {category.skills.map((skill) => (
-                  <Tag key={skill.name} label={skill.name} />
+                  <li
+                    key={skill.name}
+                    className="flex items-baseline justify-between border-b border-border py-2"
+                  >
+                    <span className="font-mono text-sm">{skill.name}</span>
+                    {skill.level && (
+                      <span className="text-xs text-muted-foreground">
+                        {skill.level}
+                      </span>
+                    )}
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           ))}
         </div>
