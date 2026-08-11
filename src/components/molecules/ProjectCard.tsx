@@ -1,49 +1,65 @@
 import Image from "next/image";
 import { Project } from "@/types";
-import Badge from "@/components/atoms/Badge";
-import Tag from "@/components/atoms/Tag";
+import Badge from "@/components/molecules/Badge";
 
 interface ProjectCardProps {
   project: Project;
-  onSelect: (project: Project) => void;
 }
 
-export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
+/**
+ * Card bento de proyecto (design system F.5).
+ * - article + a stretch (whole card clickable via ::after)
+ * - sin sombras (regla anti-IA)
+ * - hover: translateY(-4px) + border ámbar + thumbnail scale(1.03) interno
+ */
+export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <button
-      onClick={() => onSelect(project)}
-      className="group block w-full text-left bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-[1.02] cursor-pointer"
-    >
-      <div className="relative aspect-video bg-slate-100 overflow-hidden">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-md border border-white/[0.06] bg-card transition-[transform,border-color] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-[rgba(251,191,36,0.3)]">
+      <div className="relative overflow-hidden aspect-[16/10]">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 48vw"
+          className="object-cover transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
         />
       </div>
-      <div className="p-5">
-        <div className="flex items-center justify-between mb-2">
-          <Badge variant={project.status}>
-            {project.status === "production" ? "En producción" : "Local"}
-          </Badge>
-          <span className="text-xs text-slate-400 font-mono">
+
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <Badge variant={project.status} />
+          <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
             {project.category}
           </span>
         </div>
-        <h3 className="text-lg font-semibold font-display text-navy-900 group-hover:text-blue-600 transition-colors">
+
+        <h3 className="mt-4 font-display text-h3 font-semibold leading-tight text-foreground">
           {project.title}
         </h3>
-        <p className="text-sm text-slate-500 mt-1 line-clamp-2">
-          {project.subtitle}
-        </p>
-        <div className="flex flex-wrap gap-1.5 mt-3">
+        <p className="mt-2 text-sm text-muted-foreground">{project.description}</p>
+
+        <ul className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <Tag key={tag} label={tag} />
+            <li
+              key={tag}
+              className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground"
+            >
+              {tag}
+            </li>
           ))}
-        </div>
+        </ul>
+
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.title} — ver caso`}
+          className="mt-auto inline-flex items-center gap-2 pt-6 font-mono text-xs uppercase tracking-wider text-primary transition-colors duration-200 hover:text-primary-hover after:absolute after:inset-0"
+        >
+          Ver caso
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
-    </button>
+    </article>
   );
 }

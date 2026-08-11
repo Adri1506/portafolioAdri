@@ -78,4 +78,31 @@ export const projects: Project[] = [
       "Efectos visuales y sonoros",
     ],
   },
+  {
+    id: "zacorspa",
+    title: "ZacorSpa",
+    subtitle: "Spa & Bienestar",
+    description:
+      "Sitio web de spa y bienestar en Alameda 1100, Santiago. Diseño biophilic con estética de naturaleza (madera, piedra, verde, agua). Incluye catálogo de 7 rituales de bienestar, sistema de membresía por niveles (Club Zacor), galería de instalaciones, testimonios y reservas por WhatsApp. Experiencia inmersiva con animaciones suaves y diseño responsive.",
+    image: "/images/projects/zacorspa.png",
+    imageFull: "/images/projects/zacorspa.png",
+    tags: ["Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+    status: "production",
+    url: "https://zacorspa.vercel.app",
+    category: "Spa / Bienestar",
+    learnings: [
+      "Diseño biophilic con paleta de tierra (madera, musgo, piedra)",
+      "Sistema de membresía por niveles con precios dinámicos",
+      "Integración con WhatsApp para reservas y suscripciones",
+      "Animaciones suaves para atmósfera de relax",
+    ],
+    features: [
+      "Catálogo de 7 rituales de bienestar",
+      "Club Zacor con 3 niveles de membresía",
+      "Galería de instalaciones (7 fotos)",
+      "Testimonios de clientes",
+      "Reservas por WhatsApp",
+      "Diseño responsive y accesible",
+    ],
+  },
 ];

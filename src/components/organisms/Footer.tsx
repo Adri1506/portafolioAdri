@@ -1,25 +1,59 @@
-import SocialLinks from "@/components/molecules/SocialLinks";
+import { contactInfo } from "@/lib/data/contact";
+
+const socialLinks: Array<{ label: string; href: string; external: boolean }> = [
+  { label: "Email", href: `mailto:${contactInfo.email}`, external: false },
+  { label: "WhatsApp", href: contactInfo.whatsapp, external: true },
+  { label: "LinkedIn", href: contactInfo.linkedin, external: true },
+  { label: "GitHub", href: contactInfo.github, external: true },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy-900 text-white py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <p className="text-lg font-bold font-display text-white">
-              Adrián Zamorano
-            </p>
-            <p className="text-sm text-slate-400 font-mono mt-1">
-              Ingeniero en Informática · SDD con IA
-            </p>
+    <footer
+      className="border-t border-border"
+      style={{ background: "var(--gradient-abyss)" }}
+    >
+      <div className="max-w-5xl mx-auto px-4 py-12 sm:px-6">
+        <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-3">
+            <span className="font-display text-2xl font-bold text-primary">
+              AZ.
+            </span>
+            <div>
+              <p className="font-display font-semibold">Adrián Zamorano</p>
+              <p className="mt-0.5 font-mono text-xs text-muted-foreground">
+                Ingeniero en Informática · SDD con IA
+              </p>
+            </div>
           </div>
-          <SocialLinks variant="footer" />
+
+          <p className="font-mono text-xs text-muted-foreground">
+            Santiago, Chile
+          </p>
+
+          <ul className="flex items-center gap-5">
+            {socialLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  {...(link.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="link-underline inline-flex items-center gap-1 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="mt-8 pt-6 border-t border-navy-700 text-center">
-          <p className="text-xs text-slate-500">
-            &copy; {currentYear} Adrián Zamorano. Todos los derechos reservados.
+
+        <div className="mt-10 border-t border-border pt-6">
+          <p className="font-mono text-xs text-muted-foreground">
+            © {currentYear} Adrián Zamorano. Todos los derechos reservados.
           </p>
         </div>
       </div>

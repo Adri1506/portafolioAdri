@@ -6,19 +6,19 @@ interface CTAButtonProps {
   children: React.ReactNode;
 }
 
-export default function CTAButton({ href, variant, children }: CTAButtonProps) {
-  const styles = {
-    primary:
-      "bg-blue-600 text-white hover:bg-blue-500 shadow-md hover:shadow-lg",
-    outline:
-      "border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50",
-  };
+const base =
+  "inline-flex min-h-12 items-center justify-center rounded-sm px-7 py-3.5 font-mono text-[0.8125rem] uppercase tracking-[0.08em] transition-all duration-[200ms] ease-[cubic-bezier(0.16,1,0.3,1)]";
 
+const variants = {
+  primary:
+    "bg-primary text-primary-foreground hover:bg-primary-hover hover:-translate-y-0.5 active:translate-y-0",
+  outline:
+    "border border-border-strong bg-transparent text-foreground hover:border-primary hover:text-primary",
+};
+
+export default function CTAButton({ href, variant, children }: CTAButtonProps) {
   return (
-    <Link
-      href={href}
-      className={`inline-block px-8 py-3 rounded-lg font-semibold transition-all duration-200 ${styles[variant]}`}
-    >
+    <Link href={href} className={`${base} ${variants[variant]}`}>
       {children}
     </Link>
   );
