@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 
 /**
  * GeometricNetworkBackground — SVG animado: vértices forman la letra "AZ".
@@ -121,6 +121,7 @@ export default function GeometricNetworkBackground({
   const tRef = useRef<number>(0);
   const mouseRef = useRef<{ x: number; y: number } | null>(null);
   const reducedRef = useRef(false);
+  const [, forceRender] = useState(0);
 
   const build = useCallback((w: number, h: number) => {
     const rand = seeded(2026);
@@ -219,6 +220,7 @@ export default function GeometricNetworkBackground({
     const w = r.width || 900;
     const h = r.height || 700;
     build(w, h);
+    forceRender((n) => n + 1);
 
     let prev = performance.now();
 
